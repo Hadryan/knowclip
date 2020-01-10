@@ -42,7 +42,7 @@ const highlightEpic: AppEpic = (action$, state$, effects) => {
         )
       )
     ),
-    flatMap(({ waveformMousedown, clipIdAtX }) => {
+    switchMap(({ waveformMousedown, clipIdAtX }) => {
       const state = state$.value
       const mousePositionOrClipStart = clipIdAtX
         ? (r.getClip(state, clipIdAtX) as Clip).start

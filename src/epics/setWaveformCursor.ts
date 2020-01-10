@@ -1,5 +1,5 @@
 import { fromEvent, Observable } from 'rxjs'
-import { map, startWith, filter, switchMap } from 'rxjs/operators'
+import { map, startWith, filter, switchMap, tap } from 'rxjs/operators'
 import { setWaveformCursor } from '../actions'
 import * as r from '../redux'
 import { AppEpic } from '../types/AppEpic'
@@ -50,6 +50,7 @@ const setWaveformCursorEpic: AppEpic = (action$, state$, effects) =>
         // @ts-ignore
         true
       ).pipe(
+        tap(e => console.log('timeupdate', { e })),
         map(() => setCursor(state$.value, effects.getCurrentTime(), effects)),
         startWith(setWaveformCursor(0, { xMin: 0 }))
       )

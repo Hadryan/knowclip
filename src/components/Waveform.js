@@ -202,7 +202,7 @@ const Waveform = ({
         onMouseDown={onMouseDown}
         height={HEIGHT}
       >
-        {path && <image xlinkHref={`file://${path}`} />}
+        {/* {path && <image xlinkHref={`file://${path}`} />} */}
         <Cursor {...cursor} />
         <Clips {...{ clips, highlightedClipId, stepsPerSecond }} />
         {pendingClip && (
